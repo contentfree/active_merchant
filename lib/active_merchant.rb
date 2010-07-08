@@ -23,7 +23,12 @@
                     
 $:.unshift File.dirname(__FILE__)
 
-require 'active_support'
+# Rails 3 doesn't include all core functionality by default
+begin
+  require 'active_support/all'
+rescue
+  require 'active_support'
+end
 require 'builder'
 require 'cgi'
 require 'rexml/document'
